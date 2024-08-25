@@ -3,8 +3,8 @@ pragma solidity ^0.8.26;
 
 contract ScavengerHunt {
     address public owner;
-    mapping(address => mapping(bytes32 => bool)) private userSubmittedKeys; // Track submitted keys per user
-    mapping(address => uint) public userProgress;
+    mapping(address => mapping(bytes32 => bool)) private userSubmittedKeys; // Hashset-like structure for tracking submitted keys
+    mapping(address => uint) public userUniqueKeyCount; // Track unique keys submitted per user
     mapping(bytes32 => bool) private validKeys;
 
     // Define a fixed-size array to store the valid key hashes
@@ -35,20 +35,15 @@ contract ScavengerHunt {
 
     function submitKey(bytes32 keyHash) public {
         require(validKeys[keyHash], "Invalid key!");
-        require(!userSubmittedKeys[msg.sender][keyHash], "Key already submitted!");
-
-        userSubmittedKeys[msg.sender][keyHash] = true;
-        userProgress[msg.sender] = countUniqueKeys(msg.sender);
-    }
-
-    function countUniqueKeys(address user) internal view returns (uint) {
-        uint count = 0;
-        for (uint i = 0; i < allValidKeys.length; i++) {
-            if (userSubmittedKeys[user][allValidKeys[i]]) {
-                count += 1;
-            }
+        
+        if (userSubmittedKeys[msg.sender][keyHash]) {
+            // Key is already submitted
+            revert("Key already submitted!");
+        } else {
+            // New unique key submission
+            userSubmittedKeys[msg.sender][keyHash] = true;
+            userUniqueKeyCount[msg.sender] += 1;
         }
-        return count;
     }
 
     function isValidKey(bytes32 keyHash) public view returns (bool) {
@@ -56,6 +51,6 @@ contract ScavengerHunt {
     }
 
     function getUserProgress(address user) public view returns (uint) {
-        return userProgress[user];
+        return userUniqueKeyCount[user];
     }
 }
