@@ -1,48 +1,30 @@
-# Scavenger Hunt dApp
+# Scavenger Hunt Smart Contract
 
-## Overview
+## Vision
 
-This is a decentralized application (dApp) built using Solidity and Web3.js. It features a simple scavenger hunt game where users can submit keys to earn progress. The contract validates the submitted keys and tracks user progress.
+The Scavenger Hunt smart contract aims to create an engaging and interactive blockchain-based game where users can submit valid keys to track their progress. The game is designed to ensure users submit unique keys to achieve milestones, enhancing both the fun and challenge of the scavenger hunt.
 
-## Smart Contract
+## Project Features
 
-The smart contract is written in Solidity and deployed on an Ethereum-compatible network. It includes the following features:
+- **Key Submission**: Users can submit keys to progress in the scavenger hunt. Each key is hashed and checked against a predefined set of valid keys.
+- **Unique Key Tracking**: Only unique keys are counted towards user progress. Repeated submissions of the same key are not allowed and will not affect progress.
+- **Progress Tracking**: The contract tracks how many unique valid keys a user has submitted. Users can query their progress at any time.
+- **Validity Check**: Users can verify if a key is valid before submitting it, ensuring they are working with the correct keys.
+- **Gas Efficiency**: The contract is optimized to reduce gas costs associated with key submissions and progress tracking.
 
-- **Owner:** The address that deployed the contract.
-- **User Progress:** A mapping that tracks the progress of each user based on the number of valid keys submitted.
-- **Valid Keys:** A mapping that stores the hash of valid keys.
+## Future Scope
 
-## Frontend
+- **Dynamic Key Management**: Extend the contract to allow dynamic addition or removal of valid keys.
+- **User Leaderboards**: Implement a leaderboard system to showcase top performers based on the number of unique keys submitted.
+- **Enhanced User Interaction**: Develop a front-end interface with additional features such as user profiles, achievement badges, and real-time notifications.
+- **Multi-Chain Support**: Expand the contract to support deployment on multiple blockchains or Layer 2 solutions for scalability and reduced costs.
+- **Smart Contract Upgrades**: Implement upgradeable smart contract patterns to allow future enhancements and improvements without losing existing data.
 
-The frontend is built using HTML and JavaScript, specifically Web3.js, to interact with the Ethereum smart contract. It allows users to submit keys and check if they are valid.
 
-## Installation
+## Developer Details
 
-### Clone the Repository:
-
-```bash
-git clone <repository-url>
-cd <repository-folder>
-```
-
-### Install Dependencies:
-
-Ensure you have Web3.js included in your HTML file. You can use the CDN link or install it via npm if you're using a bundler like Webpack.
-
-### Setup MetaMask:
-
-Make sure you have MetaMask installed in your browser and connected to the Ethereum network where the contract is deployed.
-
-## Usage
-
-    - Open index.html in Your Browser:
-
-    - The frontend is designed to be opened directly in a web browser. Make sure MetaMask is connected to the correct network.
-
-    - Submit a Key:
-        Enter the key in the input field.
-        Click the "Submit Key" button.
-        You will see the status message indicating whether the key was submitted successfully or if there was an error.
+**Name**: `Arka Mukhopadhyay`
+**Email**: `anonymoushumanbeing001@gmail.com`
 
 ## License
 
@@ -52,3 +34,8 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - Solidity
 - Web3.js
 - MetaMask
+
+## Deployment
+
+- Chain Name: EduChain Open Campus
+- Contract ID: 0xf6a01375ca57dace52922bf92d9761d05e896722

@@ -5,12 +5,31 @@ window.addEventListener('load', async () => {
         try {
             await window.ethereum.request({ method: 'eth_requestAccounts' });
 
-            const contractAddress = '0xcc7E1e34F702905D733d0509D4c37d833e6066b3';
+            const contractAddress = '0xf6a01375ca57dace52922bf92d9761d05e896722';
             const abi = [
                 {
                     "inputs": [],
                     "stateMutability": "nonpayable",
                     "type": "constructor"
+                },
+                {
+                    "inputs": [
+                        {
+                            "internalType": "address",
+                            "name": "user",
+                            "type": "address"
+                        }
+                    ],
+                    "name": "getUserProgress",
+                    "outputs": [
+                        {
+                            "internalType": "uint256",
+                            "name": "",
+                            "type": "uint256"
+                        }
+                    ],
+                    "stateMutability": "view",
+                    "type": "function"
                 },
                 {
                     "inputs": [
@@ -90,6 +109,7 @@ window.addEventListener('load', async () => {
 
                 try {
                     const isValid = await contract.methods.isValidKey(keyHash).call();
+                    console.log("Is Valid:", isValid);
 
                     if (isValid) {
                         await contract.methods.submitKey(keyHash).send({ from: account });
@@ -102,6 +122,24 @@ window.addEventListener('load', async () => {
                     console.error(error);
                 }
             });
+
+            document.getElementById('checkProgress').addEventListener('click', async () => {
+                const accounts = await web3.eth.getAccounts();
+                const account = accounts[0];
+
+                try {
+                    const progress = await contract.methods.getUserProgress(account).call();
+                    if (progress >= 5) {
+                        document.getElementById('progressStatus').innerText = 'Congrats, you have successfully completed the game!';
+                    } else {
+                        document.getElementById('progressStatus').innerText = `Your progress: ${progress}`;
+                    }
+                } catch (error) {
+                    document.getElementById('progressStatus').innerText = 'Error retrieving progress!';
+                    console.error(error);
+                }
+            });
+
         } catch (error) {
             document.getElementById('status').innerText = 'Error connecting to MetaMask!';
             console.error(error);
