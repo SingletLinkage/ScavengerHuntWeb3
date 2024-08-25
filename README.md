@@ -39,5 +39,5 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## Deployment
 
 - Chain Name: EduChain Open Campus
-- Contract ID: 0xf6a01375ca57dace52922bf92d9761d05e896722
+- Contract ID: 0xaff4e06c138d56cd6d0931a42f3cc4fdb7d7ebe3
 ![contract](Contractdetails.png)

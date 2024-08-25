@@ -5,8 +5,21 @@ window.addEventListener('load', async () => {
         try {
             await window.ethereum.request({ method: 'eth_requestAccounts' });
 
-            const contractAddress = '0xf6a01375ca57dace52922bf92d9761d05e896722';
+            const contractAddress = '0xaff4e06c138d56cd6d0931a42f3cc4fdb7d7ebe3';
             const abi = [
+                {
+                    "inputs": [
+                        {
+                            "internalType": "bytes32",
+                            "name": "keyHash",
+                            "type": "bytes32"
+                        }
+                    ],
+                    "name": "submitKey",
+                    "outputs": [],
+                    "stateMutability": "nonpayable",
+                    "type": "function"
+                },
                 {
                     "inputs": [],
                     "stateMutability": "nonpayable",
@@ -66,25 +79,12 @@ window.addEventListener('load', async () => {
                 {
                     "inputs": [
                         {
-                            "internalType": "bytes32",
-                            "name": "keyHash",
-                            "type": "bytes32"
-                        }
-                    ],
-                    "name": "submitKey",
-                    "outputs": [],
-                    "stateMutability": "nonpayable",
-                    "type": "function"
-                },
-                {
-                    "inputs": [
-                        {
                             "internalType": "address",
                             "name": "",
                             "type": "address"
                         }
                     ],
-                    "name": "userProgress",
+                    "name": "userUniqueKeyCount",
                     "outputs": [
                         {
                             "internalType": "uint256",
@@ -97,9 +97,7 @@ window.addEventListener('load', async () => {
                 }
             ];
             
-
             const contract = new web3.eth.Contract(abi, contractAddress);
-
             document.getElementById('submitKey').addEventListener('click', async () => {
                 const key = document.getElementById('keyInput').value;
                 const keyHash = web3.utils.keccak256(key);
