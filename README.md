@@ -1,5 +1,6 @@
 # Scavenger Hunt Smart Contract
 
+![icon](ScavengerIcon.png)
 ## Vision
 
 The Scavenger Hunt smart contract aims to create an engaging and interactive blockchain-based game where users can submit valid keys to track their progress. The game is designed to ensure users submit unique keys to achieve milestones, enhancing both the fun and challenge of the scavenger hunt.
@@ -23,8 +24,8 @@ The Scavenger Hunt smart contract aims to create an engaging and interactive blo
 
 ## Developer Details
 
-**Name**: `Arka Mukhopadhyay`
-**Email**: `anonymoushumanbeing001@gmail.com`
+- **Name**: `Arka Mukhopadhyay`
+- **Email**: `anonymoushumanbeing001@gmail.com`
 
 ## License
 
